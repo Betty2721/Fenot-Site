@@ -2,101 +2,116 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const teamMembers = [
+import team1 from "../assets/blog-1.jpg";
+import team2 from "../assets/blog-2.jpg";
+import team3 from "../assets/blog-2.jpg";
+import team4 from "../assets/blog-2.jpg";
+
+const team = [
   {
     name: "Mr. Eyuel",
     role: "Protestant Clergy",
-    image: "/images/clergy1.jpg",
+    img: team1,
   },
   {
     name: "D/n Abel Sisay",
     role: "Executive Officer",
-    image: "/images/clergy2.jpg",
+    img: team2,
   },
   {
     name: "Zemen Asaye",
     role: "Executive Officer",
-    image: "/images/clergy3.jpg",
+    img: team3,
   },
   {
     name: "Yosef Abera",
     role: "Lead Pastor",
-    image: "/images/clergy4.jpg",
+    img: team4,
   },
 ];
 
 export default function TeamMembers() {
-  const [active, setActive] = useState(0);
+  const [index, setIndex] = useState(0);
 
-  const next = () => {
-    setActive((prev) => (prev + 1) % teamMembers.length);
-  };
+  const prev = () =>
+    setIndex(index === 0 ? team.length - 1 : index - 1);
 
-  const prev = () => {
-    setActive((prev) => (prev - 1 + teamMembers.length) % teamMembers.length);
-  };
+  const next = () =>
+    setIndex(index === team.length - 1 ? 0 : index + 1);
 
   return (
-    <section className="w-full py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="flex items-start justify-between mb-12">
-          <div>
-            <p className="text-sm text-orange-500 font-medium mb-2">
-              — Church Officers
-            </p>
-            <h2 className="text-4xl font-serif font-semibold leading-tight max-w-xl">
-              Get Acquainted with Our Exceptional Clergy Team
-            </h2>
-          </div>
+    <div className="w-full py-14">
+      
+      {/* Header */}
+      <div className="flex justify-between items-start px-10">
+        <div>
+          <p className="text-[#F7D407] font-semibold">
+            — Church Officers
+          </p>
 
-          <div className="flex gap-3">
-            <button
-              onClick={prev}
-              className="w-12 h-12 rounded-full border border-orange-400 flex items-center justify-center hover:bg-orange-400 hover:text-white transition"
-            >
-              <ChevronLeft />
-            </button>
-            <button
-              onClick={next}
-              className="w-12 h-12 rounded-full border border-orange-400 flex items-center justify-center hover:bg-orange-400 hover:text-white transition"
-            >
-              <ChevronRight />
-            </button>
-          </div>
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight text-[#1732A7]">
+            Get Acquainted with Our <br />
+            Exceptional Clergy Team
+          </h1>
         </div>
 
-        {/* Team Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {teamMembers.map((member, index) => (
-            <div key={index} className="text-center">
-              <div className="w-full h-[360px] rounded-[60px] overflow-hidden bg-black mb-5">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+        {/* Arrows */}
+        <div className="flex gap-3">
+          <button
+            onClick={prev}
+            className="w-10 h-10 border border-[#F7D407] text-[#1732A7] rounded-full flex 
+            justify-center items-center hover:bg-[#F7D407] hover:text-black transition"
+          >
+            <ChevronLeft size={18}/>
+          </button>
 
-              <h3 className="text-lg font-semibold">{member.name}</h3>
-              <p className="text-sm text-gray-500">{member.role}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Pagination Dots */}
-        <div className="flex justify-center gap-2 mt-10">
-          {teamMembers.map((_, index) => (
-            <span
-              key={index}
-              onClick={() => setActive(index)}
-              className={`w-3 h-3 rounded-full cursor-pointer transition ${
-                active === index ? "bg-orange-500" : "bg-gray-300"
-              }`}
-            />
-          ))}
+          <button
+            onClick={next}
+            className="w-10 h-10 border border-[#F7D407] text-[#1732A7] rounded-full flex 
+            justify-center items-center hover:bg-[#F7D407] hover:text-black transition"
+          >
+            <ChevronRight size={18}/>
+          </button>
         </div>
       </div>
-    </section>
+
+      {/* Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-10 px-10">
+        {team.map((person, i) => (
+          <div key={i} className="text-center">
+            
+            <div className="w-full h-80 rounded-[60px] overflow-hidden shadow-md">
+              <img
+                src={person.img}
+                className="w-full h-full object-cover"
+                alt={person.name}
+              />
+            </div>
+
+            <h3 className="mt-5 text-lg font-semibold text-[#1732A7]">
+              {person.name}
+            </h3>
+
+            <p className="text-gray-500 text-sm">
+              {person.role}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* Dots */}
+      <div className="flex justify-center gap-2 mt-8">
+        {team.map((_, i) => (
+          <span
+            key={i}
+            className={`w-3 h-3 rounded-full ${
+              index === i
+                ? "bg-[#F7D407]"
+                : "bg-gray-300"
+            }`}
+          ></span>
+        ))}
+      </div>
+    </div>
   );
 }

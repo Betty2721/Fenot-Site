@@ -1,5 +1,5 @@
 import React from "react";
-import heroBg from "../assets/hero.jpg";
+import newletterbg from "../assets/Newsletter-bg.jpg";
 
 export default function NewsLetter() {
   return (
@@ -8,7 +8,7 @@ export default function NewsLetter() {
       style={{
         backgroundImage: `
           linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-          url(${heroBg})
+          url(${newletterbg})
         `,
       }}
     >
@@ -62,3 +62,6 @@ export default function NewsLetter() {
     </section>
   );
 }
+
+// 1732A7 - Use this blue - Primary
+// F7D407 - Use this Yellow -Secondary.............

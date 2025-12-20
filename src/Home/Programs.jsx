@@ -1,111 +1,114 @@
 "use client";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import portfolio1 from "../assets/masonry-portfolio-1.jpg";
+import portfolio2 from "../assets/masonry-portfolio-2.jpg";
+import portfolio3 from "../assets/masonry-portfolio-5.jpg";
 
 const programs = [
   {
-    title: "የእሁድ ስብከት ከቤተክርስቲያን",
-    author: "ስብከት በ፡ ጃክሰን ወርስት",
-    image: "/images/sermon1.jpg",
+    title: "ልብሶች ማስታወቂያ እና መዝገብ",
+    desc: "ይህ ፕሮግራም ተማሪዎችን ለመንገድ ይረዳል",
+    author: "ተዘጋጀ በ ቢቲ ማርኬ",
+    img: portfolio1,
   },
   {
-    title: "የክርስማስ መልእክት – የእግዚአብሔርን ፈቃድ በተሻለ መንገድ መከተል",
-    author: "ስብከት በ፡ ጃክሰን ወርስት",
-    image: "/images/sermon2.jpg",
+    title: "ትምህርት መስሪያ ቤት",
+    desc: "ተማሪዎች እንዲያዳጉ ይረዳል",
+    author: "ተዘጋጀ በ ቢቲ ማርኬ",
+    img: portfolio2,
   },
   {
-    title: "የክርስማስ መልእክት – የእግዚአብሔርን ፈቃድ በተሻለ መንገድ መከተል",
-    author: "ስብከት በ፡ ጃክሰን ወርስት",
-    image: "/images/sermon3.jpg",
+    title: "ቴክኖሎጂ ፕሮግራሞች",
+    desc: "ለዘመናዊ ዓለም ዝግጁ ያደርጋል",
+    author: "ተዘጋጀ በ ቢቲ ማርኬ",
+    img: portfolio3,
   },
 ];
 
-export default function Programs() {
-  const [active, setActive] = useState(0);
+export default function ProgramsCarousel() {
+  const [index, setIndex] = useState(0);
 
-  const next = () => {
-    setActive((prev) => (prev + 1) % programs.length);
-  };
+  const prev = () =>
+    setIndex(index === 0 ? programs.length - 1 : index - 1);
 
-  const prev = () => {
-    setActive((prev) => (prev - 1 + programs.length) % programs.length);
-  };
+  const next = () =>
+    setIndex(index === programs.length - 1 ? 0 : index + 1);
 
   return (
-    <section className="w-full py-20 bg-[#fdf8f3]">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-12 gap-6">
-          <div>
-            <p className="text-sm text-orange-500 font-medium mb-2">
-              — ቅዱሳዊ ትምህርቶች
-            </p>
-            <h2 className="text-4xl font-serif font-semibold mb-4">
-              መንፈሳዊ ፕሮግራሞቻችንን ይመልከቱ
-            </h2>
-            <p className="text-gray-500 max-w-xl">
-              ወደ መንፈሳዊ ጥልቀት የሚወስዱ አስተዋይ ስብከቶችን ያግኙ
-            </p>
-          </div>
+    <div className="w-full flex flex-col items-center py-12 bg-white">
+      <p className="font-semibold tracking-widest text-[#F7D407]">
+        ፕሮግራሞቻችን
+      </p>
 
-          <div className="flex gap-3">
-            <button
-              onClick={prev}
-              className="w-12 h-12 rounded-full border border-orange-400 flex items-center justify-center hover:bg-orange-400 hover:text-white transition"
-            >
-              <ChevronLeft />
-            </button>
-            <button
-              onClick={next}
-              className="w-12 h-12 rounded-full border border-orange-400 flex items-center justify-center hover:bg-orange-400 hover:text-white transition"
-            >
-              <ChevronRight />
-            </button>
-          </div>
-        </div>
+      <h1 className="text-3xl md:text-4xl font-bold mt-2 text-[#1732A7]">
+        መካከለኛ ፕሮግራሞችን ይመልከቱ
+      </h1>
 
-        {/* Program Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {programs.map((program, index) => (
-            <div
-              key={index}
-              className="relative h-[420px] rounded-2xl overflow-hidden group"
-            >
+      <p className="text-gray-500 mt-2">
+        በሚገባ ተመርጠው የተዘጋጀ ስራዎች እና ፕሮግራሞች
+      </p>
+
+      {/* Controls */}
+      <div className="flex gap-4 mt-6">
+        <button
+          onClick={prev}
+          className="w-10 h-10 border rounded-full flex items-center justify-center 
+          border-[#1732A7] text-[#1732A7] hover:bg-[#1732A7] hover:text-white transition"
+        >
+          <ChevronLeft />
+        </button>
+
+        <button
+          onClick={next}
+          className="w-10 h-10 border rounded-full flex items-center justify-center
+          border-[#1732A7] text-[#1732A7] hover:bg-[#1732A7] hover:text-white transition"
+        >
+          <ChevronRight />
+        </button>
+      </div>
+
+      {/* Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 px-6 md:px-20 w-full">
+        {programs.map((item, i) => (
+          <div
+            key={i}
+            className={`rounded-xl overflow-hidden shadow-lg border ${
+              index === i ? "border-[#F7D407]" : "border-gray-200"
+            }`}
+          >
+            <div className="h-64 w-full">
               <img
-                src={program.image}
-                alt={program.title}
+                src={item.img}
+                alt={item.title}
                 className="w-full h-full object-cover"
               />
-
-              {/* Dark Overlay */}
-              <div className="absolute inset-0 bg-black/50 group-hover:bg-black/60 transition"></div>
-
-              {/* Text Content */}
-              <div className="absolute bottom-6 left-6 right-6 text-white">
-                <h3 className="text-xl font-semibold mb-2 leading-snug">
-                  {program.title}
-                </h3>
-                <p className="text-sm text-orange-300">
-                  {program.author}
-                </p>
-              </div>
             </div>
-          ))}
-        </div>
 
-        {/* Pagination Dots */}
-        <div className="flex justify-center gap-2 mt-10">
-          {programs.map((_, index) => (
-            <span
-              key={index}
-              onClick={() => setActive(index)}
-              className={`w-3 h-3 rounded-full cursor-pointer transition ${
-                active === index ? "bg-orange-500" : "bg-gray-300"
-              }`}
-            />
-          ))}
-        </div>
+            <div className="p-4">
+              <h2 className="text-lg font-bold text-[#1732A7]">
+                {item.title}
+              </h2>
+
+              <p className="text-gray-600 mt-2">{item.desc}</p>
+
+              <p className="text-sm text-gray-400 mt-3">{item.author}</p>
+            </div>
+          </div>
+        ))}
       </div>
-    </section>
+
+      {/* Dots */}
+      <div className="flex gap-2 mt-6">
+        {programs.map((_, i) => (
+          <span
+            key={i}
+            className={`w-3 h-3 rounded-full ${
+              index === i ? "bg-[#F7D407]" : "bg-gray-300"
+            }`}
+          ></span>
+        ))}
+      </div>
+    </div>
   );
 }

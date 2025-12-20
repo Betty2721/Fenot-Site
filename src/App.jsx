@@ -1,27 +1,23 @@
-import React from 'react'
-import Navbar from "./components/Navbar";
-import Hero from './Home/Hero';
-import About from './Home/About';
-import Programs from './Home/Programs';
-import Counter from './Home/Counter'
-import TeamMembers from './Home/TeamMembers';
-import NewsLetter from './Home/NewsLetter';
-import Footer from './Home/Footer';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import HomePage from "./pages/HomePage";
+import BlogList from "./pages/blog/BlogList";
+import BlogDetails from "./pages/blog/BlogDetails";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
-    <div>
+    <Router>
       <Navbar />
-      <Hero />
-      <About />
-      <Programs />
-      <Counter />
-      <TeamMembers />
-      <NewsLetter />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/blog/:id" element={<BlogDetails />} />
+      </Routes>
       <Footer />
-    </div>
-  )
-}
+    </Router>
+  );
+};
 
-export default App
+export default App;

@@ -1,9 +1,9 @@
-import { useState } from "react";
-import logo from "../assets/logo.PNG"; // adjust if it's .svg or .jpg
+// import { useState } from "react";
+import logo from "../assets/logo-white.png"; // adjust if it's .svg or .jpg
 
 export default function Navbar() {
   return (
-    <header className="absolute top-0 left-0 w-full z-50">
+    <header className="top-0 left-0 w-full bg-blue-950 sticky opacity-80 z-50">
       <nav className="flex items-center justify-between px-6 lg:px-20 py-4">
 
         {/* Logo */}

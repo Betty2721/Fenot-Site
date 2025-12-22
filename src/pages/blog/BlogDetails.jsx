@@ -62,7 +62,7 @@ const blog = {
 
 const BlogDetails = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10 grid lg:grid-cols-12 gap-8">
+    <div className="max-w-7xl mx-auto px-4 bg-white shadow-2xl shadow-gray-800 my-12 py-10 grid lg:grid-cols-12 gap-8">
       <div className="lg:col-span-8 space-y-6">
         <img src={blog.image} alt={blog.title} className="w-full rounded-lg" />
         <h1 className="text-3xl font-bold">{blog.title}</h1>
@@ -147,7 +147,7 @@ const BlogDetails = () => {
 
       <aside className="lg:col-span-4 space-y-6">
   {/* ደራሲ */}
-  <div className="border p-4 rounded-md space-y-4">
+  <div className="border bg-slate-100 border-slate-200 p-4 rounded-md space-y-4">
     <div className="flex items-center space-x-4">
       <img src={personAvatar} alt="መምህር ሊዮን" className="w-16 h-16 rounded-full border border-blue-900" />
       <div>
@@ -160,7 +160,7 @@ const BlogDetails = () => {
   </div>
 
   {/* ፍለጋ */}
-  <div className="border p-4 rounded-md">
+  <div className="border bg-slate-100 border-slate-200 p-4 rounded-md">
     <h3 className="font-semibold mb-2">ፈልግ</h3>
     <div className="flex">
       <input type="text" className="w-full border border-gray-300 rounded-l-md p-2" placeholder="ርዕሶች ፈልግ..." />
@@ -169,7 +169,7 @@ const BlogDetails = () => {
   </div>
 
   {/* ምድቦች */}
-  <div className="border p-4 rounded-md">
+  <div className="border bg-slate-100 border-slate-200 p-4 rounded-md">
     <h3 className="font-semibold mb-2">ምድቦች</h3>
     <ul className="space-y-1 text-gray-700 text-sm">
       <li>መንፈሳዊ ትምህርት (32)</li>
@@ -182,7 +182,7 @@ const BlogDetails = () => {
   </div>
 
   {/* ታጎች */}
-  <div className="border p-4 rounded-md">
+  <div className="border bg-slate-100 border-slate-200 p-4 rounded-md">
     <h3 className="font-semibold mb-2">ታጎች</h3>
     <div className="flex flex-wrap gap-2">
       {[

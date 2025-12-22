@@ -11,7 +11,7 @@ import Gallery from "./home/Gallery";
 
 export default function HomePage() {
   return (
-    <div>
+    <div className="-mt-24 top-0 w-full">
       <Hero />
       <About />
       <ProgramsCarousel />

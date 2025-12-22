@@ -1,10 +1,24 @@
-// import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "../assets/logo-white.png"; // adjust if it's .svg or .jpg
 
 export default function Navbar() {
+
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setIsScrolled(window.scrollY > 10); // if scroll > 10px = true
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   return (
-    <header className="top-0 left-0 w-full bg-blue-950 sticky opacity-80 z-50">
-      <nav className="flex items-center justify-between px-6 lg:px-20 py-4">
+   
+     <header className={`top-0 left-0  sticky mt-4 z-50  px-12 transition-all duration-300
+        ${isScrolled ? "bg-[#102891]" : "mx-12 rounded-4xl bg-white/25 backdrop-blur-2xl"}
+      `}>
+     
+       <nav className="flex items-center justify-between px-6 lg:px-12 py-4">
 
         {/* Logo */}
         <div className="flex items-center gap-2">
@@ -13,11 +27,13 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-8 text-white font-medium">
-          <li className="hover:text-gray-500 cursor-pointer">Home</li>
-          <li className="hover:text-gray-500 cursor-pointer">Our Church</li>
-          <li className="hover:text-gray-500 cursor-pointer">Ministries</li>
-          <li className="hover:text-gray-500 cursor-pointer">Events</li>
-          <li className="hover:text-gray-500 cursor-pointer">Contact</li>
+          <li className="hover:text-gray-500 cursor-pointer"> Home </li>
+          <li className="hover:text-gray-500 cursor-pointer"> Our Church </li>
+          <li className="hover:text-gray-500 cursor-pointer"> Ministries </li>
+          <li className="hover:text-gray-500 cursor-pointer"> Events </li>
+          <li className="hover:text-gray-500 cursor-pointer"> Our Shop </li>
+          <li className="hover:text-gray-500 cursor-pointer"> Members </li>
+          <li className="hover:text-gray-500 cursor-pointer"> Contact </li>
         </ul>
 
         {/* Contact Us Button */}
@@ -37,9 +53,11 @@ export default function Navbar() {
         </button>
 
         {/* Bottom Line */}
-        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-white/20"></div>
+        {/* <div className="absolute bottom-0 left-0 w-full h-[1px] bg-white/20"> </div> */}
 
       </nav>
-    </header>
+     
+     </header>
+
   );
 }

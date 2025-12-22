@@ -11,10 +11,10 @@ const App = () => {
   return (
     <Router>
       <Navbar />
-      <Routes>
+        <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/blog/:id" element={<BlogDetails />} />
-      </Routes>
+        </Routes>
       <Footer />
     </Router>
   );

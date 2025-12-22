@@ -61,7 +61,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mt-12 border-t border-gray-800 py-6">
+      <div className="mt-12 border-t border-b-gray-400/20 py-6">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400">
           <p>© 2025 Finote Tsidk. All Rights Reserved.</p>
 

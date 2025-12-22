@@ -149,7 +149,7 @@ const BlogDetails = () => {
   {/* ደራሲ */}
   <div className="border p-4 rounded-md space-y-4">
     <div className="flex items-center space-x-4">
-      <img src={personAvatar} alt="መምህር ሊዮን" className="w-16 h-16 rounded-full border-1 border-blue-900" />
+      <img src={personAvatar} alt="መምህር ሊዮን" className="w-16 h-16 rounded-full border border-blue-900" />
       <div>
         <h3 className="font-semibold">መምህር ሊዮን</h3>
       </div>

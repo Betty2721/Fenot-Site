@@ -1,6 +1,7 @@
 import img1 from "../../assets/hero-bg.jpg";
 import img2 from "../../assets/hero.png";
 import { Heart, Users, HandHeart, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function AboutSection() {
   return (
@@ -49,15 +50,21 @@ export default function AboutSection() {
             <Feature icon={<HandHeart size={20} color="#1732A7" />} text="ጠንካራ ግንኙነት መገንባት" />
           </div>
 
-          <button
-            className="px-6 py-3 rounded-full font-medium inline-flex items-center gap-2"
-            style={{ backgroundColor: "#1732A7", color: "#fff" }}
+        <Link
+          to="/about"
+          className="px-6 py-3 rounded-full font-medium inline-flex items-center gap-2"
+          style={{ backgroundColor: "#1732A7", color: "#fff" }}
+        >
+          ተጨማሪ ለማወቅ
+          <span
+            className="inline-block w-6 h-6 rounded-full flex items-center justify-center"
+            style={{ backgroundColor: "#F7D407", color: "#000" }}
           >
-            ተጨማሪ ለማወቅ
-            <span className="inline-block w-6 h-6 rounded-full flex items-center justify-center" style={{ backgroundColor: "#F7D407", color: "#000" }}>
-              ➜
-            </span>
-          </button>
+            ➜
+          </span>
+        </Link>
+
+
         </div>
       </div>
     </section>

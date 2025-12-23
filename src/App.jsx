@@ -6,6 +6,7 @@ import BlogList from "./pages/blog/BlogList";
 import BlogDetails from "./pages/blog/BlogDetails";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import AboutPage from "./pages/AboutPage";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/blog/:id" element={<BlogDetails />} />
+        <Route path="/about" element={<AboutPage />} />
         </Routes>
       <Footer />
     </Router>

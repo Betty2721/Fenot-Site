@@ -41,8 +41,8 @@ export default function Navbar() {
       className={`sticky top-0 z-50 mt-4 px-4 md:px-12 transition-all duration-300
         ${
           isScrolled
-            ? "bg-[#102891] "
-            : "mx-12 lg:mx-24 rounded-xl bg-white/25 backdrop-blur-2xl"
+            ? "bg-[#102891] shadow-2xl shadow-blue-900"
+            : "mx-12 lg:mx-24 rounded-xl shadow-2xl bg-white/25 backdrop-blur-2xl"
         }
       `}
     >

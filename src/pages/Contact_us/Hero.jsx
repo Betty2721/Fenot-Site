@@ -16,13 +16,13 @@ export default function AboutHero() {
       {/* Content */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center text-center">
         <h1 className="text-3xl md:text-5xl font-extrabold tracking-wide text-white">
-          Our Church
+          Matthew 11:28
         </h1>
 
         <div className="mt-4 rounded-md bg-white px-5 py-2 text-sm font-medium shadow">
           <span className="text-gray-700">Home</span>
           <span className="mx-2 text-gray-400">/</span>
-          <span className="text-amber-500">Our Church</span>
+          <span className="text-amber-500">Contact Us</span>
         </div>
       </div>
     </section>

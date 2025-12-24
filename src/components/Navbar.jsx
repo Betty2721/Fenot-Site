@@ -1,63 +1,103 @@
-import { useEffect, useState } from "react";
-import logo from "../assets/logo-white.png"; // adjust if it's .svg or .jpg
+import { useEffect, useRef, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import logo from "../assets/logo-white.png";
+
+const navItems = [
+  { name: "Home", path: "/" },
+  { name: "Our Gallery", path: "/gallery" },
+  // { name: "Events", path: "/events" },
+  { name: "Shop Items", path: "/shop" },
+  { name: "About", path: "/about" },
+  { name: "Contact", path: "/contact" },
+];
 
 export default function Navbar() {
-
   const [isScrolled, setIsScrolled] = useState(false);
+  const [underlineStyle, setUnderlineStyle] = useState({});
+  const navRef = useRef([]);
+  const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => {
-      setIsScrolled(window.scrollY > 10); // if scroll > 10px = true
-    };
+    const onScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    const activeIndex = navItems.findIndex(
+      (item) => item.path === location.pathname
+    );
+    const activeEl = navRef.current[activeIndex];
+    if (activeEl) {
+      setUnderlineStyle({
+        width: activeEl.offsetWidth,
+        transform: `translateX(${activeEl.offsetLeft}px)`,
+      });
+    }
+  }, [location]);
+
   return (
-   
-     <header className={`top-0 left-0  sticky mt-4 z-50  px-12 transition-all duration-300
-        ${isScrolled ? "bg-[#102891]" : "mx-12 rounded-4xl bg-white/25 backdrop-blur-2xl"}
-      `}>
-     
-       <nav className="flex items-center justify-between px-6 lg:px-12 py-4">
+    <header
+      className={`sticky top-0 z-50 mt-4 px-4 md:px-12 transition-all duration-300
+        ${
+          isScrolled
+            ? "bg-[#102891] "
+            : "mx-12 lg:mx-24 rounded-xl bg-white/25 backdrop-blur-2xl"
+        }
+      `}
+    >
+      <nav className="flex items-center justify-between px-6 lg:px-12 py-4 relative">
 
         {/* Logo */}
-        <div className="flex items-center gap-2">
-          <img src={logo} alt="Church Logo" className="h-12 w-auto" />
+         <NavLink to="/">
+        <div className="flex items-center gap-2  ">
+        <img src={logo} alt="Logo" className="h-12" />
+        <div className="flex-col md:block hidden">
+        <h2 className=" text-sm text-white">ፍኖተ ጽድቅ</h2>
+        <h2 className=" text-sm text-white">Finote Tsidk</h2>
         </div>
-
+        </div>
+         </NavLink>
         {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center gap-8 text-white font-medium">
-          <li className="hover:text-gray-500 cursor-pointer"> Home </li>
-          <li className="hover:text-gray-500 cursor-pointer"> Our Church </li>
-          <li className="hover:text-gray-500 cursor-pointer"> Ministries </li>
-          <li className="hover:text-gray-500 cursor-pointer"> Events </li>
-          <li className="hover:text-gray-500 cursor-pointer"> Our Shop </li>
-          <li className="hover:text-gray-500 cursor-pointer"> Members </li>
-          <li className="hover:text-gray-500 cursor-pointer"> Contact </li>
+        <ul className="hidden md:flex gap-8 text-white font-medium relative">
+          {navItems.map((item, index) => (
+            <li
+              key={item.name}
+              ref={(el) => (navRef.current[index] = el)}
+              className="relative"
+            >
+              <NavLink
+                to={item.path}
+                className="hover:text-gray-300 transition"
+              >
+                {item.name}
+              </NavLink>
+            </li>
+          ))}
+
+          {/* Animated underline */}
+          <span
+            className="absolute -bottom-2 left-0 h-[2px] bg-white transition-all duration-300"
+            style={underlineStyle}
+          />
         </ul>
 
-        {/* Contact Us Button */}
-        <button
-          className="hidden md:block px-5 py-2 rounded-full font-medium text-white"
-          style={{ backgroundColor: "#1732A7" }} // Primary blue
+        {/* Button */}
+        <NavLink
+          to="/register"
+          className="hidden md:block px-5 py-2 rounded-full text-black font-medium bg-amber-300"
         >
-          Contact Us
-        </button>
+          Register
+        </NavLink>
 
-        {/* Mobile View - Only Button */}
-        <button
-          className="md:hidden px-4 py-2 rounded-full font-medium text-white"
-          style={{ backgroundColor: "#1732A7" }}
+        {/* Mobile */}
+        <NavLink
+          to="/contact"
+          className="md:hidden px-4 py-2 rounded-full text-white font-medium bg-[#1732A7]"
         >
-          Contact Us
-        </button>
-
-        {/* Bottom Line */}
-        {/* <div className="absolute bottom-0 left-0 w-full h-[1px] bg-white/20"> </div> */}
-
+          Contact
+        </NavLink>
       </nav>
-     
-     </header>
-
+    </header>
   );
 }

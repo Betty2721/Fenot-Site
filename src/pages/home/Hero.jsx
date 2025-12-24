@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import hero1 from "../../assets/hero-bg.jpg";
 import hero2 from "../../assets/hero.png";
 import hero3 from "../../assets/Newsletter-bg.jpg";
+import { NavLink } from "react-router-dom";
 
 export default function Hero() {
   const images = [hero1, hero2, hero3];
@@ -48,12 +49,17 @@ export default function Hero() {
             ስለ ሰ/ት/ቤቱ
           </button>
 
-          <button
+
+         <NavLink to="/register">
+         <button
             className="px-6 py-3 rounded-full font-medium"
             style={{ backgroundColor: "#F7D407", color: "#000" }}
           >
             ለመመዝገብ
           </button>
+         </NavLink>
+
+          
         </div>
       </div>
     </section>

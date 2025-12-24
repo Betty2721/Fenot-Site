@@ -16,7 +16,7 @@ const stats = [
 export default function StatsSection() {
   return (
     <div className="w-full py-20 flex justify-center bg-[#0D164F]" style={{ backgroundImage: `url(${imageBackground})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "bottom" }}>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         {stats.map((item, i) => {
           const Icon = item.icon;
           return (

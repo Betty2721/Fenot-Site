@@ -4,7 +4,7 @@ import Hero from "./home/Hero";
 import About from "./home/About";
 import ProgramsCarousel from "./home/Programs";
 import Counter from "./home/Counter";
-import TeamMembers from "./home/TeamMembers";
+import TeamMembers from "./home/Leaders";
 import NewsLetter from "./home/NewsLetter";
 import Footer from "../components/Footer";
 import Gallery from "./home/Gallery";

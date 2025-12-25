@@ -1,7 +1,5 @@
 import Hero from "./Contact_us/Hero";
-import ContactDetails from "./Contact_us/contactDetails";
-
-
+import ContactDetails from "./Contact_us/ContactDetails";
 
 const ContactPage = () => {
   return (
